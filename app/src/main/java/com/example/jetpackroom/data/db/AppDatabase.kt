@@ -6,8 +6,6 @@ import com.example.jetpackroom.data.dao.PersonDao
 import com.example.jetpackroom.data.entity.Person
 
 @Database(entities = arrayOf(Person::class), version = 1, exportSchema = false)
-class AppDatabase {
-    abstract class AppData : RoomDatabase() {
-        abstract fun personDao() : PersonDao
-    }
+abstract class AppDatabase : RoomDatabase() {
+    abstract fun personDao() : PersonDao
 }
