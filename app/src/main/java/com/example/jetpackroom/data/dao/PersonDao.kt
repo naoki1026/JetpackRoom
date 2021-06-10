@@ -4,6 +4,7 @@ import androidx.room.*
 import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.jetpackroom.data.entity.Person
 import com.example.jetpackroom.data.entity.PersonTuple
+import io.reactivex.Flowable
 
 /**
  * DAO(Data Access Object)
@@ -56,6 +57,10 @@ interface PersonDao {
 
     @Query("SELECT * FROM person WHERE name like :name OR mail like :name")
     fun getPersonSubset(name: String) : Array<PersonTuple>
+
+    // Room-RxJavaを使用
+    @Query("SELECT * FROM person")
+    fun loadAllPeopleFlowable() : Flowable<Array<Person>>
 
 
  }
